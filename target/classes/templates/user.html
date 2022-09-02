@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Moin!</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body style="margin: 0; padding:0;">
+    <table style="border: 0; position: absolute; top: 0; bottom: 0; left: 0; right: 0; height: 100%; width: 100%; cellspacing: 0; cellpadding: 0;">
+        <tr>
+            <td style="width: 100%; height: 100%; text-align: center; vertical-align: middle;">
+                <h2>Moin<span th:if="${authenticatedUser != null}" th:text="' ' + ${authenticatedUser?.username}"></span>!</h2>
+                <br />
+                <div>Dieser Bereich ist nur für eingeloggte sichtbar</div>
+                <br />
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <a href="/" type="button" class="btn btn-outline-warning"><< zurück</a>
+                    <a href="/forAll" type="button" class="btn btn-outline-primary">ungeschützer Bereich</a>
+                    <a href="/user" type="button" class="btn btn-outline-primary">persönlicher Bereich</a>
+                    <a href="/admin" type="button" class="btn btn-outline-primary">nur für Admins</a>
+                </div>
+                <br />
+                <div th:if="${authenticatedUser != null}"><a type="button" class="btn btn-outline-danger" href="/logout"><span th:text="${authenticatedUser?.username}"/> ausloggen</a></div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
